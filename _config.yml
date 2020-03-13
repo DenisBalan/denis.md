@@ -1,0 +1,30 @@
+title: Denis Balan
+tagline: Developer, Speaker, Devops # first page, in title
+description: >- 
+  Denis Balan is a cloud advocate, devops engineer, programmer, technologist, writer, microsoft certified, and more.
+sidebardescription: >-
+  blog about software development from Republic of Moldova
+sidebar_home_link: /
+twitter_username: DenisBalans
+github_username:  DenisBalan
+linkedin_username:  DenisBalan
+paginate: 5
+
+highlighter: rouge
+syntax_theme: monokai
+markdown: kramdown
+
+disqus:
+  shortname: denisbalan
+permalink: /:title:output_ext
+
+theme: jekyll-theme-hydeout
+remote_theme: fongandrew/hydeout
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-tidy
+  - jekyll-seo-tag
+  
+jekyll_tidy:
+  compress_html: false

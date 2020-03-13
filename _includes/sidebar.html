@@ -1,0 +1,26 @@
+<div id="sidebar">
+    <header>
+      <{% if page.layout == "index" %}h1{% else %}div{% endif %} class="site-title">
+        <!-- <p class="lead">
+          <a href="{{ "/" | relative_url }}">
+            <img src="https://placeimg.com/150/150/any" />
+          </a>
+          </p> -->
+        <a href="{{ "/" | relative_url }}">
+          {% unless page.url == "/" %}
+            <span class="back-arrow icon">{% include svg/back-arrow.svg %}</span>
+          {% endunless %}
+          {{ site.title }}
+        </a>
+      </{% if page.layout == "index" %}h1{% else %}div{% endif %}>
+      <p class="lead">{{ site.sidebardescription }}</p>
+    </header>
+    {% include sidebar-nav-links.html %}
+  
+    {% if site.version %}
+      <span class="site-version">Currently v{{ site.version }}</span>
+    {% endif %}
+  
+    {% include sidebar-icon-links.html %}
+    {% include copyright.html %}
+  </div>
