@@ -2,6 +2,7 @@
 layout: post
 title:  "Powershell Module: unrevealing process of developing, testing and publishing"
 date:   2020-03-12 00:00:00 +02
+image: /assets/images/eur-to-mdl-rate-graph.png
 categories: powershell
 tags: 
   - powershell 

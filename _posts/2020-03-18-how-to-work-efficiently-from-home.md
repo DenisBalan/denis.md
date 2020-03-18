@@ -2,6 +2,7 @@
 layout: post
 title: COVID-19 impact on working from home
 date: 2020-03-18 12:00:00 +0000
+image: /assets/images/photo-of-man-wearing-gray-shirt-and-apron.jpg
 categories: gtd
 tags:
 - work
