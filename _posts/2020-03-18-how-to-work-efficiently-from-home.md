@@ -13,7 +13,7 @@ tags:
 Modern problems, modern solutions, COVID-19 it surprised us with his appearance, in order to manage the impacts of corona-virus, remote work seems to be good for everyone: comfortable conditions, cozy atmosphere, free schedule. But these benefits can be a hindrance. How to learn to work productively from home?
 
 ![man working from home](/assets/images/photo-of-man-wearing-gray-shirt-and-apron.jpg "Work from home")
-[photo credit](credit)
+[photo credit](https://www.pexels.com/photo/photo-of-man-wearing-gray-shirt-and-apron-374079/)
 
 Working from home has many advantages: you do not waste time on the way to the office, you make up your own schedule of the working day, you may have more time for yourself.
 
@@ -37,7 +37,7 @@ Make sure you have a clear time schedule and try to keep it. Smartphone reminder
 
 Working from home often means that you have far fewer face-to-face meetings that could help eyes rest from the computer screen. Trying to do quality work with tired eyes or exhausted minds will not lead to the desired result.
 
-![eye exercises](/assets/images/Eye-Exercises.jpg)
+![eye exercises](/assets/images/eye-exercises.jpg)
 
 [photo credit](https://www.icarevision.com/vision-therapy/eye-exercises-you-can-try-at-home/)
 
