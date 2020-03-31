@@ -11,9 +11,9 @@ tags:
 - ci/cd
 
 ---
-> How to develop, push, build, deploy (to Docker Hub) and run docker image based container in Azure DevOps.
+> How to develop, push, build, deploy (to Docker Hub) and run docker image-based container in Azure DevOps.
 
-This article assume that you already are familiar with docker, altrought it doesn't focus on Docker we will touch some basics.
+This article assume that you already are familiar with docker, although it doesn't focus on Docker we will touch some basics.
 
 ![docker container image](/assets/images/azure-devops-docker-build-deploy/shipping-container.jpg "container image")
 Containerization in real life
@@ -22,12 +22,12 @@ The key advantage of Docker is that it allows users to pack the application with
 
 ## Why use container?
 
-Docker's takeoff was truly epic. Despite the fact that the containers themselves are not a new technology, before Docker they were not so common and popular. Docker changed the situation by providing a standard API that greatly simplified the creation and use of containers, and allowed the community to work together on libraries for working with containers.
+Docker's takeoff was truly epic. Even though the containers themselves are not a new technology, before Docker they were not so common and popular. Docker changed the situation by providing a standard API that greatly simplified the creation and use of containers and allowed the community to work together on libraries for working with containers.
 
 ## Build dummy image
 
 Suppose you have a `Dockerfile` file that describes your application, if not, let's create dummy one.
-For demo, i will use `nginx` image, should be able to see "hello" in `/humans.txt` url
+For demo, i will use `nginx` image, should be able to see "hello" in `/humans.txt` URL
 
 *Don't create manually this Dockerfile*, in next statement we will create it automatically.
 ```Dockerfile
@@ -36,20 +36,20 @@ FROM nginx:alpine
 COPY humans.txt /usr/share/nginx/html/humans.txt
 ```
 
-To get started, open powershell, copy next line, paste, and press enter.
+To get started, open PowerShell, copy next line, paste, and press enter.
 
-It will create create a directory `./demo` and inside, two files, first `humans.txt` with `hello` word inside, and `Dockerfile` with content above.
+It will create a directory `./demo` and inside, two files, first `humans.txt` with `hello` word inside, and `Dockerfile` with content above.
 
 ```powershell
 mkdir ./demo; cd ./demo; echo 'hello' > ./humans.txt; echo "FROM nginx:alpine`nCOPY humans.txt /usr/share/nginx/html/humans.txt" > ./Dockerfile
 ```
 
-To test it locally, lets build it and run
+To test it locally, let's build it and run
 ```powershell
 # suppose you ran previous statement and Dockerfile is present
 docker build . -t demo
 docker run -p 8080:80 demo
-# either open in browser 
+# either open in browser
 # http://localhost:8080/humans.txt
 # or in powershell
 Invoke-RestMethod http://localhost:8080/ |% html |% head |% title
@@ -71,7 +71,7 @@ git push -u origin --all
 
 *colored `master` word from prompt provided by [posh-git for powershell](https://github.com/dahlbyk/posh-git)*
 
-If no errors appeared while pusing, you should be able to see this file structure.
+If no errors appeared while pushing, you should be able to see this file structure.
 
 ![azure devops repo](/assets/images/azure-devops-docker-build-deploy/azure-devops-repository.png "file listing in repository")
 
@@ -82,19 +82,19 @@ To add connection to public Docker Hub repository, perform those steps:
 1. Click `project settings`
 2. Under pipeline configuration click `service connections`
 3. Click `new service connection` on right side
-   
+
     ![project settings service connections](/assets/images/azure-devops-docker-build-deploy/add-dockerhub-azure-devops.png "dockerhub connection")
 4. Specify parameters (your docker id and password)
-   
+
     ![adding dockerhub to azure devops pipeline](/assets/images/azure-devops-docker-build-deploy/dockerhub-parameters.png "dockerhub parameters for azure devops")
-5. Click save and verify 
+5. Click save and verify
 
 You are done.
 ## Create YAML (.yml) pipeline file
 
 > You could achieve same steps just creating same file with your editor and pushing to repo.
 
-Now let's go to Azure DevOps pipelines, click `New pipeline`, specify `Azure Repos Git` select your repository, and under configure step, select `Starter pipeline` like in image below, it should create a minimal `azure-pipelines.yml` file, but dont worry, we will replace it with our.
+Now let's go to Azure DevOps pipelines, click `New pipeline`, specify `Azure Repos Git` select your repository, and under configure step, select `Starter pipeline` like in image below, it should create a minimal `azure-pipelines.yml` file, but don't worry, we will replace it with ours.
 
 ![pipelines in azure devops pipeline](/assets/images/azure-devops-docker-build-deploy/starter-pipeline.png "configuration settings for azure pipeline")
 
@@ -116,7 +116,7 @@ variables:
 stages:
 - stage: Build
   displayName: Build image
-  jobs:  
+  jobs:
   - job: Build
     displayName: Build
     pool:
@@ -143,7 +143,7 @@ Now click `Save and run`
 
 ![save and run pipeline](/assets/images/azure-devops-docker-build-deploy/review-pipeline-yaml.png "pipeline final step")
 
-Wait until pipeline completes the execution, after that go to your dockerhub account, you should see your container image uploaded.
+Wait until pipeline completes the execution, after that go to your Docker hub account, you should see your container image uploaded.
 Or, alternatively, search docker container images from command line
 
 ```powershell
@@ -154,7 +154,7 @@ docker search mylogin
 ```
 ## Create release definition
 
-After you succesfully deployed container image into dockerhub from azure devops, to run it you should create a release definiton (or alternatively, deploy it via `az cli` specifying your image name), in this article i will go with first step.
+After you successfully deployed container image into docker hub from azure devops, to run it you should create a release definition (or alternatively, deploy it via `az cli` specifying your image name), in this article i will go with first step.
 
 Navigate to `Pipelines - Releases` click `New release pipeline`
 
@@ -168,5 +168,5 @@ You can start with `Empty job` predefined template, after that navigate to tasks
 5. Image - `mylogin/image-name` specified in build step
 6. Click Save and Create release
 
-After all steps done, navigate to your app service in browser, appending `/humans.txt` at the end of the url.
+After all steps done, navigate to your app service in browser, appending `/humans.txt` at the end of the URL.
 ![result of deployed container image](/assets/images/azure-devops-docker-build-deploy/humans-txt-docker.png "humans file served from azure app service")

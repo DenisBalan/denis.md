@@ -11,7 +11,7 @@ tags:
 ---
 > *tl;dr* How to develop and publish basic PowerShell 7 module with PSScriptAnalyzer, Pester, Plaster, PSDeploy, BuildHelpers, InvokeBuild invoking CI build on AppVeyor that test the module to not break anything, and CD pipeline to publish to PowershellGallery.
 
-Daily experience with PowerShell implies itself dealing with scripts, being it plain scripts, grouped cmdlets or whole modules. Properly packaging your code into a reusable module is one way of achieving [separation of concers].
+Daily experience with PowerShell implies itself dealing with scripts, being it plain scripts, grouped cmdlets or whole modules. Properly packaging your code into a reusable module is one way of achieving [separation of concerns].
 
 > Module that extracts information from [National Bank of Moldova] (Banca Națională a Moldovei - BNM) about today's exchange rate for foreign currencies for integrating into application backends, excel sheets, and more.
 
@@ -33,7 +33,7 @@ Contains meta-information about the module, such as author, requirements, functi
 
 ### Dynamic Modules
 
-Modules that were created in runtime by `New-Module` cmdlet, cannot be accessed by `Get-Module`, they do not need manifests, and most likely no permanent folder to store themself.
+Modules that were created in runtime by `New-Module` cmdlet, cannot be accessed by `Get-Module`, they do not need manifests, and most likely no permanent folder to store themselves.
 
 For this project i choose script module.
 
@@ -60,7 +60,7 @@ Install-Module BNMoldovaCurrency -scope CurrentUser;
 Import-Module BNMoldovaCurrency
 ```
 
-Below is a table explaining each file's responsability
+Below is a table explaining each file's responsibility
 
 ```powershell
 Get-Command -Module BNMoldovaCurrency |% { Get-Help $_ | select name, synopsis, @{ n = 'description'; e = { $_.description[0].Text } } }
@@ -98,7 +98,7 @@ There are several tests in `tests` folder:
 
 - [1.BNMoldovaCurrency.Tests.ps1] - tests file integrity with PSScriptAnalyzer
 - [2.Help.Tests.ps1] - requires functions to have examples, description and synopsis
-- [Get-BNMConfig.Tests.ps1] - tests `Set-BNMConfig` and `Get-BNMConfig` to return proper builded endpoint
+- [Get-BNMConfig.Tests.ps1] - tests `Set-BNMConfig` and `Get-BNMConfig` to return proper endpoint
 - [Get-BNMCurrency.Tests.ps1] - tests xml parsing of exchange rates to have predefined schema (`Polaris` used as a proxy for mocking BNM server)
 
 ## Summary
@@ -158,7 +158,7 @@ Writing PowerShell module is not a thing you should scary, but instead enjoy all
 Feel free to fork it via GitHub - [BNMoldovaCurrency].
 
 [National Bank of Moldova]: http://bnm.md/en
-[separation of concers]: https://en.wikipedia.org/wiki/Separation_of_concerns
+[separation of concerns]: https://en.wikipedia.org/wiki/Separation_of_concerns
 [msdn]: https://docs.microsoft.com/en-us/powershell/scripting/developer/module/understanding-a-windows-powershell-module
 [Pester]: https://github.com/pester/Pester
 [PSDeploy]: https://github.com/RamblingCookieMonster/PSDeploy
