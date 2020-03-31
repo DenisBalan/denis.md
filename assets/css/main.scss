@@ -4,4 +4,6 @@
 
 $sidebar-bg-color: #2d3339;
 $sidebar-sticky: false;
+.content { padding: 2rem 0.5rem 2rem 0.5rem !important; }
+.highlight { padding: 1rem 0.5rem 1rem 0.5rem !important; }
 @import "hydeout";
